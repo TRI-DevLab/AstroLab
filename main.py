@@ -2,6 +2,7 @@
 
 import pygame
 from sys import exit 
+import config
 
 
 def main():
@@ -9,8 +10,8 @@ def main():
     # initialize pygame 
     pygame.init()
 
-    screen = pygame.display.set_mode((1000, 500))
-    pygame.display.set_caption("AstroLab")
+    screen = pygame.display.set_mode((config.WINDOW_WIDTH, config.WINDOW_HEIGHT))
+    pygame.display.set_caption(config.TITLE)
     clock = pygame.time.Clock()
 
 
@@ -24,10 +25,10 @@ def main():
                 running = False
 
         # Screen background
-        screen.fill((8, 10, 20))
+        screen.fill(config.BACKGROUND_COLOR)
 
         # Frame Rate per second
-        clock.tick(60)     
+        clock.tick(config.FPS)     
 
         # Update constantly
         pygame.display.flip()     
