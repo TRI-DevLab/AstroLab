@@ -4,6 +4,9 @@ import pygame
 from sys import exit 
 import config
 
+from renderer import Renderer
+from objects.celestial_body import CelestialBody
+
 
 def main():
 
@@ -14,7 +17,8 @@ def main():
     pygame.display.set_caption(config.TITLE)
     clock = pygame.time.Clock()
 
-
+    # Celestial body
+    sun = CelestialBody(500, 250, 2000, 15, (239, 142, 56))
 
     running = True
     while running:
@@ -24,8 +28,14 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-        # Screen background
-        screen.fill(config.BACKGROUND_COLOR)
+        # Render
+        renderer = Renderer(screen)
+
+        #### Background ####
+        renderer.draw_background()
+
+        #### Draw Body ####
+        renderer.draw_body(sun)
 
         # Frame Rate per second
         clock.tick(config.FPS)     
